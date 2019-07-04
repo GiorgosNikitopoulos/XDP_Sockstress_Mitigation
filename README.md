@@ -214,10 +214,11 @@ Figure 2.1.
 <img src="introduction/fig/Sockstress_basic.png">
 </p>
 <p align="center"> Figure 2.1: Sockstress Basic Sequence </p>
+
 What Sockstress does in this mode is send a SYN packet to the victim’s
 IP address with window size 59395 and as it receives the ACK reply from
 the target it sends back a TCP ACK packet with zero window length. This
-mode of attack is referred to by the [Wikipedia Article on Sockstress](https://en.wikipedia.org/wiki/Sockstress) as *Zero window connection stress*.
+mode of attack is referred to by the [Wikipedia Article on Sockstress](https://en.wikipedia.org/wiki/Sockstress) as **Zero window connection stress**.
 
 There are however many more attack scenarios that are not covered by the
 aforementioned implementation of Sockstress. Such attack scenarios are:

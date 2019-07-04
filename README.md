@@ -464,13 +464,14 @@ Kernel-space part: xdp\_kern.c
 ------------------------------
 
 This part essentially does all the profiling and the dropping of the
-packets. The SEC() macro (in line 51 of Listing 3.2) uses
+packets. The SEC() macro (in line 51 of Listing 3.3) uses
 the \_\_attribute\_\_ directive for the gnu compiler to create a code
-segment called xdp. The output of command in Listing \[lst:objdump\] is
+segment called xdp. The output of command in Listing 3.2 is
 shown in Figure \[fig:objdump\] and it verifies the creation of the code
 segment named xdp.
 
     llvm-objdump -h xdp_kern.o
+<p align="center"> Listing 3.3 </p>
 
 ![objdump code segments
 output[]{data-label="fig:objdump"}](introduction/fig/objdump.png)
@@ -485,7 +486,7 @@ verifier mentioned in the first chapter checks requires for all eBPF
 programs to have less than 4096 instructions so that by design all
 programs terminate quickly.
 
-Function decap\_ipv4 (called in line 69 of Listing 3.2)
+Function decap\_ipv4 (called in line 69 of Listing 3.3)
 essentially extracts the protocol from the header and returns it in the
 ipproto variable. It is then checked at line 76 on if it is ICMP (Ping
 packet) and the packet is dropped if that is true. This functionality
@@ -493,7 +494,7 @@ was implemented as a quick check mechanism to verify that the bpf
 program was running from the victim machine with a quick failed ping on
 the interface of the attacker machine.
 
-Function decap\_tcp (called at line 82 of Listing 3.2]
+Function decap\_tcp (called at line 82 of Listing 3.3]
 filters the Sockstress packets. In line 13 the tcp\_header variable
 enables us to filter fields of the tcp header in line 20 where we check
 the case that the window size is zero and that the packet is an ACK
@@ -599,7 +600,7 @@ Clang.
     }
 
     char _license[] SEC("license") = "MIT";
-<p align="center"> Listing 3.1 </p>
+<p align="center"> Listing 3.3 </p>
 Lines 11 and 42 are function inlining directives that are necessary as
 there are no function calls in BPF. Lines 3-9 are kernel header file
 includes and Lines 18-19, 46-47 and 62-66 are necessary error checking

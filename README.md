@@ -163,6 +163,7 @@ thus an alternate method of attack vector protection is used.
 
     iptables -A OUTPUT -p TCP --tcp-flags rst rst -d <insert victim's ip address> -j DROP
 <p align="center">Listing 2.1: iptables command for local firewall</p>
+
 ### FantaIP
 
 This alternate method is implemented by a tool called FantaIP in the
@@ -201,6 +202,7 @@ that.
             send(B)
     sniff(prn=findARP)
 <p align="center">Listing 2.2: Python script for ARP spoofing arp_spoofer.py</p>
+
 ### Sockstress
 
 There are several implementations of Sockstress on the internet the most

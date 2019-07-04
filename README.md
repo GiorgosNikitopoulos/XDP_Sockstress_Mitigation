@@ -236,7 +236,7 @@ implementation that implements these functions can be found in [Pekka
 Pietikäinen repository](https://github.com/ppietikainen/sockstress)
 which is 6 years old. The age of this repository imposed problems on its
 installation in Ubuntu 18.04 which is a modern version of Linux. In
-order to make it work the [*pcap.h*]{} header file in /usr/include/pcap
+order to make it work the *pcap.h* header file in /usr/include/pcap
 had to be modified with these added definitions:
 
     #define TH_FIN 0x01

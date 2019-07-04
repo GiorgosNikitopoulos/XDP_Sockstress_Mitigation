@@ -274,7 +274,7 @@ then running a SYN Flood attack with hping with this command
 in order to see that no connections were being made by running
 
     sudo netstat -tn
-*Listing 2.7* 
+<p align="justify" *Listing 2.7* </p> 
 While on the other hand the sockstress attack created SYN\_RECV
 connections on the victim machine. The output of the same netstat
 command at this time yielded a number of connections of this form:

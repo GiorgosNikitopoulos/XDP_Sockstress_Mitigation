@@ -1,30 +1,16 @@
 ![image](title/alterlogo.png){width="5cm"}\
 \
-<span style="font-variant:small-caps;">University of Thessaly</span>\
-<span style="font-variant:small-caps;">Department of Electrical and
-Computer Engineering</span>\
+University of Thessaly, Department of Electrical and
+Computer Engineering
 
-------------------------------------------------------------------------
-
-\
 [ **title**]{}\
 
-------------------------------------------------------------------------
+* **Nikitopoulos Georgios** - *Author* 
 
+* **Christos D. Antonopoulos** - *Supervisor* 
 \
 
-*Author:*\
-author
-
- 
-
-*Supervisor:*\
-Prof. Christos D. Antonopoulos
-
-\
-
-[A project report submitted for the class of]{}\
-[*HY401 Special Topics*]{}\
+A project report submitted for the class of *HY401 Special Topics*
 \
 
 System Setup

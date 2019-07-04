@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-![image](title/alterlogo.png)
-\
-=======
 ![image](title/alterlogo.png)\
->>>>>>> ab15d00c6f34763b005a7dc2445e206a9df6baad
 University of Thessaly, Department of Electrical and
 Computer Engineering
 
@@ -21,7 +16,7 @@ System Setup
 
 The system chosen for the development of this implementation is a
 virtual machine hosted in GRNET’s (Greek NREN) clouding platform
- okeanos-knossos. The virtual machine was updated to Linux Kernel 4.18
+ okeanos-knossos. The virtual machine was updated to Linux Kernel 4.18
 in order to be able to be compatible with XDP (support available since
 Linux Kernel Version 4.8, generic mode available since 4.12 and
 virtio\_net drivers since 4.10) and JIT compiling (since version 4.18
@@ -205,10 +200,10 @@ There are several implementations of Sockstress on the internet the most
 popular one being [defuse.ca’s Sockstress
 implementation](https://github.com/defuse/sockstress) which is limited
 to Sockstress’s most basic usage which is basically described in
-Figure \[fig:sockstress\_basic\].
+Figure \[fig:sockstress\_basic\].
 
 ![Sockstress basic
-sequence[]{data-label="fig:sockstress_basic"}](introduction/fig/Sockstress_basic.png){width="1\linewidth"}
+sequence[]{data-label="fig:sockstress_basic"}](introduction/fig/Sockstress_basic.png)
 
 What Sockstress does in this mode is send a SYN packet to the victim’s
 IP address with window size 59395 and as it receives the ACK reply from
@@ -256,7 +251,7 @@ priviledges due to Sockstress’s need of raw socket usage.
 ### Zero Window Connection Attack
 
 The Zero Window Connection Attack packet sequence is described in
-Figure \[fig:sockstress\_basic\]. This attack is started with this
+Figure \[fig:sockstress\_basic\]. This attack is started with this
 command:
 
     sudo ./sockstress -A -c-1 -d <insert victim ip> -m-1 -Mz -p22,80 -r300 -s192.168.1.128/25 -vv
@@ -285,7 +280,7 @@ connections on the victim machine. The output of the same netstat
 command at this time yielded a number of connections of this form:
 
 ![SYN\_RECV list
-output[]{data-label="fig:syn_recvs"}](introduction/fig/SYN_RECVs.png){width="1\linewidth"}
+output[]{data-label="fig:syn_recvs"}](introduction/fig/SYN_RECVs.png)
 
 ### TCP Small Window Stress Attack
 
@@ -294,12 +289,12 @@ number such as 4 during the TCP handshake and then sending a payload
 such an HTTP GET request. This creates an open TCP connection in which
 all the responses from the payload request are all split into tiny
 chunks and therefore wasting system resources.
-Figure \[fig:sockstress\_small\] shows this exact functionality in a
+Figure \[fig:sockstress\_small\] shows this exact functionality in a
 port 80 attack (HTTP). An attack at say port 22 (SSH) would contain the
 SSH analogue of this payload.
 
 ![Sockstress small window size attack
-sequence[]{data-label="fig:sockstress_small"}](introduction/fig/small_window_figure.png){width="1\linewidth"}
+sequence[]{data-label="fig:sockstress_small"}](introduction/fig/small_window_figure.png)
 
 This attack is very different from the Zero Window Connection attack as
 it sets the window size in the TCP options field of the packet by
@@ -311,23 +306,23 @@ This attack version can be run with this command:
     sudo ./sockstress -A -c-1 -d <insert victim IP> -m-1 -Mw -p22,80 -r300 -s192.168.1.64 -vv
 
 It should be noted that when the victim is under attack the netstat
-command at Listing 2.7 outputs a list of ESTABLISHED
+command at Listing 2.7 outputs a list of ESTABLISHED
 connections of this form:
 
 ![ESTABLISHED connection,
-netstat[]{data-label="fig:sockstress_established"}](introduction/fig/ESTABLISHED.png){width="1\linewidth"}
+netstat[]{data-label="fig:sockstress_established"}](introduction/fig/ESTABLISHED.png)
 
 ### TCP Segment Hole Attack
 
 In this attack upon the 3-way handshake the SYN packet is setting the
 window-size to 4 bytes long and during the last ACK the attacker sends 4
 bytes followed by a packet that Zeros the window as we can see in
-Figure \[fig:segment\_hole\]. This attack is verified to be increasing
+Figure \[fig:segment\_hole\]. This attack is verified to be increasing
 the memory usage of the system unlike the other attacks by using htop on
 the victim’s machine and observing the spike during the attack.
 
 ![Segment Hole packet
-sequence[]{data-label="fig:segment_hole"}](introduction/fig/segment_hole.png){width="1\linewidth"}
+sequence[]{data-label="fig:segment_hole"}](introduction/fig/segment_hole.png)
 
 \
 This attack was performed with this command:
@@ -336,10 +331,10 @@ This attack was performed with this command:
 
 It also seams to be leaving the connections at a mix of SYS\_RECV,
 ESTABLISHED, and FIN\_WAIT1 states as shown by the output of the command
-at Listing \[lst:netstat\] in Figure \[fig:segment\_hole\_states\]
+at Listing 2.7 in Figure \[fig:segment\_hole\_states\]
 
 ![SYS\_RECV, ESTABLISHED and FIN\_WAIT1 states, Segment Hole
-Attack[]{data-label="fig:segment_hole_states"}](introduction/fig/segment_hole_states.png){width="1\linewidth"}
+Attack[]{data-label="fig:segment_hole_states"}](introduction/fig/segment_hole_states.png)
 
 ### REQ FIN Pause Stress
 
@@ -357,20 +352,20 @@ In this attack a connection is first started with the victim followed by
 a PSH packet that contains an HTTP GET request of the page. Then after
 the Server replies an ACK packet with Zero Window Length is sent by the
 Attacker. This exact packet sequence is shown in
-Figure \[fig:req\_fin\_sequence\]
+Figure \[fig:req\_fin\_sequence\]
 
 ![REQ FIN Attack Packet sequence, where Green is the attacker IP and Red
 is the victim
-IP[]{data-label="fig:req_fin_sequence"}](introduction/fig/req_fin_sequence.png){width="1\linewidth"}
+IP[]{data-label="fig:req_fin_sequence"}](introduction/fig/req_fin_sequence.png)
 
 This makes the victim machine have sockets left in the FIN\_WAIT1 state
-as shown in Figure \[fig:req\_fin\_states\]\
+as shown in Figure \[fig:req\_fin\_states\]\
 After enough sockets left in this state the Server cannot communicate
 TCP properly.
 
 ![REQ FIN Attack FIN\_WAIT1 States, where Green is the attacker IP and
 Red is the victim
-IP[]{data-label="fig:req_fin_states"}](introduction/fig/req_fin_states.png){width="1\linewidth"}
+IP[]{data-label="fig:req_fin_states"}](introduction/fig/req_fin_states.png)
 
 ### TCP Activate Reno Pressure
 
@@ -380,12 +375,12 @@ activated when 3 duplicate ACKs are received. It does that by creating a
 connection with the victim’s machine, then it sends the TCP payload
 (HTTP GET request) followed by 3 duplicate ACK packets. Then it sends
 Zero Window packets. This functionality is shown in
-Figure \[fig:act\_reno\_sequence\]. All the sockets have ESTABLISHED
+Figure \[fig:act\_reno\_sequence\]. All the sockets have ESTABLISHED
 connections in this attack
 
 ![Activate Reno Attack Packet Sequence, where Green is the attacker IP
 and Red is the victim
-IP[]{data-label="fig:act_reno_sequence"}](introduction/fig/act_reno_sequence.png){width="1\linewidth"}
+IP[]{data-label="fig:act_reno_sequence"}](introduction/fig/act_reno_sequence.png)
 
 XDP Mitigation
 ==============
@@ -404,8 +399,8 @@ Userspace part: xdp\_user.c
 The userspace part of the code is kept simple. What this module does is
 essentially call the kernel-space module (achieved by the
 bpf\_prog\_load\_xattr and bpf\_set\_link\_xdp\_fd function calls in
-lines 30 and 40 in Listing \[lst:xdp\_userc\] ) and set the mode of XDP
-to SKB mode(in line 28, Listing \[lst:xdp\_userc\]). SKB is a driver
+lines 30 and 40 in Listing 3.1 ) and set the mode of XDP
+to SKB mode(in line 28, Listing 3.1). SKB is a driver
 independent mode that allows XDP to process packets after socket buffer
 and direct memory allocation is completed. This makes a larger number of
 instructions to be run before the XDP drop and thus is not ideal in our
@@ -459,7 +454,7 @@ about the hardware or the drivers.
         
         return 0;
     }
-
+<p align="center"> Listing 3.1 </p>
 Code sections 1-9 are library includes, line 24 sets the filename of the
 kernel-space program to xdp\_kern.c, lines 35-39 is the file descriptor
 error check and another error check is performed at line 40 where the
@@ -469,28 +464,28 @@ Kernel-space part: xdp\_kern.c
 ------------------------------
 
 This part essentially does all the profiling and the dropping of the
-packets. The SEC() macro (in line 51 of Listing \[lst:xdp\_kernc\]) uses
+packets. The SEC() macro (in line 51 of Listing 3.2) uses
 the \_\_attribute\_\_ directive for the gnu compiler to create a code
-segment called xdp. The output of command in Listing \[lst:objdump\] is
-shown in Figure \[fig:objdump\] and it verifies the creation of the code
+segment called xdp. The output of command in Listing \[lst:objdump\] is
+shown in Figure \[fig:objdump\] and it verifies the creation of the code
 segment named xdp.
 
     llvm-objdump -h xdp_kern.o
 
 ![objdump code segments
-output[]{data-label="fig:objdump"}](introduction/fig/objdump.png){width="1\linewidth"}
+output[]{data-label="fig:objdump"}](introduction/fig/objdump.png)
 
 The binary containing the eBPF program is the xdp\_kern.o file and it is
 a normal ELF binary, it can be inspected with tools like
 [*llvm-objdump*]{} and [*elftools*]{}. A bpf instruction is 8 bytes
 long, by this information and by looking at the size at
-Figure \[fig:objdump\] we can derive that this program contains 812 bpf
+Figure \[fig:objdump\] we can derive that this program contains 812 bpf
 instructions. This information is important due to the fact that the
 verifier mentioned in the first chapter checks requires for all eBPF
 programs to have less than 4096 instructions so that by design all
 programs terminate quickly.
 
-Function decap\_ipv4 (called in line 69 of Listing \[lst:xdp\_kernc\])
+Function decap\_ipv4 (called in line 69 of Listing 3.2)
 essentially extracts the protocol from the header and returns it in the
 ipproto variable. It is then checked at line 76 on if it is ICMP (Ping
 packet) and the packet is dropped if that is true. This functionality
@@ -498,7 +493,7 @@ was implemented as a quick check mechanism to verify that the bpf
 program was running from the victim machine with a quick failed ping on
 the interface of the attacker machine.
 
-Function decap\_tcp (called at line 82 of Listing \[lst:xdp\_kernc\]
+Function decap\_tcp (called at line 82 of Listing 3.2]
 filters the Sockstress packets. In line 13 the tcp\_header variable
 enables us to filter fields of the tcp header in line 20 where we check
 the case that the window size is zero and that the packet is an ACK
@@ -604,7 +599,7 @@ Clang.
     }
 
     char _license[] SEC("license") = "MIT";
-
+<p align="center"> Listing 3.1 </p>
 Lines 11 and 42 are function inlining directives that are necessary as
 there are no function calls in BPF. Lines 3-9 are kernel header file
 includes and Lines 18-19, 46-47 and 62-66 are necessary error checking
@@ -620,7 +615,7 @@ need of manually modifying the code for the attacks or the IP address of
 the target (as nodes have domain names), so that more realistic attack
 simulations can be performed over real networks in order to measure the
 performance of our XDP implementation. The yaml file in
-Listing \[lst:composefile\] defines this network and the nodes can be
+Listing \[lst:composefile\] defines this network and the nodes can be
 built with two separate Dockerfiles one for the attackers and the other
 for the victim.
 
@@ -657,7 +652,7 @@ for the victim.
 We can then add the commands and specify the images for the victim node
 and the attacker nodes in the victim-dockerfile and attacker-dockerfile
 respectively. One such dockerfile would have the form of
-Listing \[lst:dockerfile\]
+Listing \[lst:dockerfile\]
 
     FROM <Insert image type (Ubuntu 18.04 for the victim and alpine 3.4 for the attackers were used)>
     ADD . /code

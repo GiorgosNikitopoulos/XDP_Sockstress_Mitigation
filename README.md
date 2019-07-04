@@ -14,9 +14,9 @@ Abstract
 ========
 Distributed Denial of Service (DDoS) attacks pose a threat to any online service across all industries. These attacks exhaust the resources that would otherwise serve legitimate users by leveraging the power of many compromised devices (botnet), thus making it unavailable for common users. In 2018 there were several attacks at 1.3 TBps and one measured at 1.7 TBps with targets ranging from Github to small organizations being affected by test attacks. This suggests that there is a big need for robust and efficient defense mechanisms that mitigate such attacks. The option used in this project is the eXpress Data Path, a programmable network data path in the Linux Kernel that processes packets in the lowest point of the network stack, which is what enables it to be advertised as a high performance solution. The method of attack utilized in this project is Sockstress, a very powerful TCP socket stress framework that was first demonstrated in 2008. Various options of attack by Sockstress will be described and outlined. Each attack mode will be mitigated by making additions in our XDP/eBPF program. When writing C programs for BPF, there are a couple of pitfalls to be aware of, compared to usual application development with C. Such pitfalls are encountered and the workarounds are documented. A single-host testing environment is created that is designed to be very easily deployable to a multi-host network that would, in further work, enable us to make more realistic measurements across different hardware.
 
-Acknowledgements
-================
+<p align="center">Acknowledgements</p>
 A big thank you to GRNET and Dimitris Mitropoulos for providing the subject of this project as well as the infrastructure that was required.
+
 System Setup
 ============
 

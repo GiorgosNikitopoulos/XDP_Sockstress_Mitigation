@@ -1,4 +1,4 @@
-![image](title/alterlogo.png)
+![image](title/alterlogo.png)\
 University of Thessaly, Department of Electrical and
 Computer Engineering
 

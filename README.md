@@ -293,6 +293,7 @@ command at this time yielded a number of connections of this form:
 <img src="introduction/fig/SYN_RECVs.png">
 </p>
 <p align="center">Figure 2.2: SYN_RECV list output</p>
+
 ### TCP Small Window Stress Attack
 
 The small window attack works by setting the window size to a small

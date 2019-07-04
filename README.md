@@ -200,11 +200,11 @@ There are several implementations of Sockstress on the internet the most
 popular one being [defuse.ca’s Sockstress
 implementation](https://github.com/defuse/sockstress) which is limited
 to Sockstress’s most basic usage which is basically described in
-Figure \[fig:sockstress\_basic\].
-
-![Sockstress basic
-sequence[]{data-label="fig:sockstress_basic"}](introduction/fig/Sockstress_basic.png)
-
+Figure 2.1.
+<p align="center"> 
+<img src="introduction/fig/Sockstress_basic.png">
+</p>
+<p align="center"> Figure 2.1: Sockstress Basic Sequence </p>
 What Sockstress does in this mode is send a SYN packet to the victim’s
 IP address with window size 59395 and as it receives the ACK reply from
 the target it sends back a TCP ACK packet with zero window length. This
@@ -471,7 +471,7 @@ shown in Figure \[fig:objdump\] and it verifies the creation of the code
 segment named xdp.
 
     llvm-objdump -h xdp_kern.o
-<p align="center"> Listing 3.3 </p>
+<p align="center"> Listing 3.2 </p>
 
 ![objdump code segments
 output[]{data-label="fig:objdump"}](introduction/fig/objdump.png)

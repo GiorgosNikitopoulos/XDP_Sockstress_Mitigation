@@ -1,17 +1,15 @@
-![image](title/alterlogo.png){width="5cm"}\
-\
+![image](title/alterlogo.png)
 University of Thessaly, Department of Electrical and
 Computer Engineering
 
-[ **title**]{}\
 
 * **Nikitopoulos Georgios** - *Author* 
 
 * **Christos D. Antonopoulos** - *Supervisor* 
-\
+
 
 A project report submitted for the class of *HY401 Special Topics*
-\
+
 
 System Setup
 ============
@@ -276,7 +274,8 @@ then running a SYN Flood attack with hping with this command
 in order to see that no connections were being made by running
 
     sudo netstat -tn
-
+|:--:| 
+| *Listing 2.7* |
 While on the other hand the sockstress attack created SYN\_RECV
 connections on the victim machine. The output of the same netstat
 command at this time yielded a number of connections of this form:
@@ -308,7 +307,7 @@ This attack version can be run with this command:
     sudo ./sockstress -A -c-1 -d <insert victim IP> -m-1 -Mw -p22,80 -r300 -s192.168.1.64 -vv
 
 It should be noted that when the victim is under attack the netstat
-command at Listing \[lst:netstat\] outputs a list of ESTABLISHED
+command at Listing 2.7 outputs a list of ESTABLISHED
 connections of this form:
 
 ![ESTABLISHED connection,

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ![image](title/alterlogo.png)
 \
+=======
+![image](title/alterlogo.png)\
+>>>>>>> ab15d00c6f34763b005a7dc2445e206a9df6baad
 University of Thessaly, Department of Electrical and
 Computer Engineering
 
